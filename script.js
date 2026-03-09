@@ -195,3 +195,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
+
+// ─────────────────────────────────────────────────────────
+// 8. PARALLAX GLOW EFFECT
+// ─────────────────────────────────────────────────────────
+(function initParallax() {
+    const glow = document.querySelector('.hero-parallax-glow');
+    if (!glow) return;
+
+    window.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // Calculate offset from center
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        const offsetX = (x - centerX) * 0.1;
+        const offsetY = (y - centerY) * 0.1;
+
+        glow.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
+    });
+})();
